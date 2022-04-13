@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+body {
+  background-color: #2C3E50; }
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column; }
+  .content .title {
+    color: #eee;
+    font-family: "Permanent Marker", cursive;
+    font-size: 6.2em;
+    margin: 2% 0 10% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .content .title .subtitle {
+      font-size: 17px;
+      font-family: monospace;
+      text-align: right;
+      width: 100%;
+      color: #727272; }
+  .content .inputAdd {
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row; }
+    .content .inputAdd input[type="text"] {
+      font-size: 1.2em;
+      border: none;
+      border-bottom: 1px solid #727272;
+      background: #2C3E50;
+      width: 35%;
+      padding: 10px;
+      color: #eee;
+      transition: border-bottom 150ms ease-in-out; }
+    .content .inputAdd input[type="text"]:focus {
+      outline: none;
+      border-bottom: 2px solid #eee; }
+  .content #tags {
+    width: 80%;
+    margin: 5% 0;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem; }
+    .content #tags .tag {
+      border: 1px solid #527599;
+      border-radius: 5px;
+      padding: 20px;
+      color: #eee;
+      font-size: 0.9em;
+      font-family: "Courier New", Courier, monospace;
+      cursor: pointer;
+      text-align: center;
+      position: relative; }
+      .content #tags .tag .close {
+        position: absolute;
+        right: 5%;
+        top: 3%;
+        cursor: pointer; }
+  @media (max-width: 680px) {
+    .content .inputAdd input[type="text"] {
+      font-size: 1.2em;
+      border: none;
+      border-bottom: 1px solid #727272;
+      background: #2C3E50;
+      width: 90%;
+      padding: 10px;
+      color: #eee;
+      transition: border-bottom 150ms ease-in-out; }
+    .content .title {
+      font-size: 2.6em;
+      margin-bottom: 10%; }
+      .content .title .subtitle {
+        font-size: 14px; }
+    .content #tags {
+      width: 98%;
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); } }
+
+/*# sourceMappingURL=style.css.map */
