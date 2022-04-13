@@ -29,13 +29,14 @@ const pulsar = e => {
     if (e.keyCode === 13 && !e.shiftKey) {
 
         let input = document.getElementById('addTag');
+        if(input.value.trim() != ''){
+            e.preventDefault();
+            addData(e);
+            localStorage.setItem('items', JSON.stringify(items))
+            input.value = '';
 
-        e.preventDefault();
-        addData(e);
-        localStorage.setItem('items', JSON.stringify(items))
-        input.value = '';
-
-        loadData();
+            loadData();
+        }
     }
 }
 
