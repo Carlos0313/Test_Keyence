@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+$background: #2C3E50;
+$principal-font: 'Permanent Marker', cursive;
+$second-font : 'Courier New', Courier, monospace;
+
+$first-font-size: 6.2em;
+$second-font-size: 4.2em;
+$second-font-size_c: 2.6em;
+$third-font-size: 1.2em;
+$fourth-font-size: 0.9em;
+
+body {
+  background-color: $background;
+}
+
+//Mixins /Funciones
+@mixin flexbox_direction($content_align, $vertical_align, $direction){
+    display: flex;
+    justify-content: $content_align;
+    align-items: $vertical_align;
+    flex-direction: $direction;
+}
+
+@mixin borderColor($tamanio,$borderColor, $tipo){
+    @if($tipo == 'all'){
+        border: $tamanio solid $borderColor;
+    }@else if($tipo == 'top'){
+        border-top:  $tamanio solid $borderColor;
+    }@else if($tipo == 'left'){
+        border-left: $tamanio solid $borderColor;
+    }@else if($tipo == 'right'){
+        border-right:  $tamanio solid $borderColor;
+    }@else if($tipo == 'bottom'){
+        border-bottom:  $tamanio solid $borderColor;
+    }
+}
+
+@mixin inputText($width, $padding, $colorF){
+    font-size: $third-font-size;
+    border: none;
+    @include borderColor(1px, rgb(114, 114, 114), 'bottom');
+    background: $background;
+    width: $width;
+    padding: $padding;
+    color : $colorF;
+    transition:  border-bottom 150ms ease-in-out;
+}
+
+@mixin  tag() {
+    @include borderColor(1px, #527599, 'all');
+    border-radius: 5px;
+    padding: 20px;
+    color: #eee;
+    font-size: $fourth-font-size;
+    font-family: $second-font;
+    cursor: pointer;
+    text-align: center;
+    position:relative;
+}
+
+
+// Estilos principales
+.content{
+    @include flexbox_direction(space-evenly, center, column);
+    .title{
+        color: #eee;
+        font-family: $principal-font;
+        font-size: $first-font-size;
+        margin: 2% 0 10% 0;
+        @include flexbox_direction(center, center, column);
+        .subtitle{
+            font-size: 17px;
+            font-family: monospace;
+            text-align: right;
+            width: 100%;
+            color: #727272;
+        }
+    }
+
+    .inputAdd{
+        width: 100%;
+        padding: 4px;
+        @include flexbox_direction(space-evenly, center, row);
+
+        input[type="text"]{
+            @include inputText(35%,10px,#eee)
+        }
+        input[type="text"]:focus{
+            outline: none;
+            @include borderColor(2px, #eee, 'bottom');
+        }
+    }
+
+    #tags{
+        width: 80%;
+        margin: 5% 0;
+        //@include borderColor(1px, #eee, 'all');
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+        .tag{
+            @include tag();
+            .close{
+                position: absolute;
+                right: 5%;
+                top: 3%;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @media(max-width: 680px){
+        .inputAdd{
+            input[type="text"]{
+                @include inputText(90%,10px,#eee)
+            }
+        }
+        .title{
+            font-size: $second-font-size_c;
+            margin-bottom: 10%;
+            .subtitle{
+                font-size: 14px;
+            }
+        }
+        #tags{
+            width: 98%;
+            grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        }
+    }
+
+}
